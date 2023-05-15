@@ -1,27 +1,20 @@
 import './App.css';
-import {Component, Fragment} from "react";
+import {Component} from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import LayoutMain from "./ui/LayoutMain";
-import {DataContext} from "./context/DataContext";
+import DataContextProvider from "./context/DataContextProvider";
 
 class App extends Component {
-  state = {
-    data: {
-      name: "John",
-      age: 22
-    }
-  }
-
   render() {
     return (
-      <Fragment>
-        <DataContext.Provider value={this.state.data}>
+      <div className={"container mt-5"}>
+        <DataContextProvider>
           <Header/>
           <LayoutMain/>
           <Footer/>
-        </DataContext.Provider>
-      </Fragment>
+        </DataContextProvider>
+      </div>
     );
   }
 }

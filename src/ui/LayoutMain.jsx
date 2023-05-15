@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
 import Sidebar from "../components/Sidebar";
-import Profile from "../pages/Profile";
+import ProfileView from "../pages/profile/ProfileView";
+import LoginView from "../pages/login/LoginView";
 
 class LayoutMain extends Component {
   render() {
     return (
       <main>
         <Sidebar />
-        <Profile />
+        <LoginView/>
+        <ProfileView />
       </main>
     );
   }
