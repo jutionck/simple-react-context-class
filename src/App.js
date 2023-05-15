@@ -4,16 +4,22 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import LayoutMain from "./ui/LayoutMain";
 import DataContextProvider from "./context/DataContextProvider";
+import {ServiceContextProvider} from "./context/ServiceContextProvider";
+import LoginService from "./pages/login/LoginService";
 
 class App extends Component {
   render() {
     return (
       <div className={"container mt-5"}>
-        <DataContextProvider>
-          <Header/>
-          <LayoutMain/>
-          <Footer/>
-        </DataContextProvider>
+        <ServiceContextProvider services={{
+          loginService: LoginService(),
+        }}>
+          <DataContextProvider>
+            <Header/>
+            <LayoutMain/>
+            <Footer/>
+          </DataContextProvider>
+        </ServiceContextProvider>
       </div>
     );
   }
