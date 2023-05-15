@@ -1,13 +1,18 @@
 import React, {Component} from 'react';
+import {DataContext} from "../context/DataContext";
 
 class Profile extends Component {
   render() {
     return (
-      <article>
-        <h2>Profile</h2>
-        <p>Name: {this.props.name}</p>
-        <p>Age: {this.props.age}</p>
-      </article>
+      <DataContext.Consumer>
+        {(data) => (
+          <article>
+            <h2>Profile</h2>
+            <p>Name: {data.name}</p>
+            <p>Age: {data.age}</p>
+          </article>
+        )}
+      </DataContext.Consumer>
     );
   }
 }

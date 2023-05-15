@@ -7,10 +7,15 @@ class LayoutMain extends Component {
     return (
       <main>
         <Sidebar />
-        <Profile name={this.props.name} age={this.props.age} />
+        <Profile />
       </main>
     );
   }
 }
 
 export default LayoutMain;
+
+/**
+ * Saat ini LayoutMain tidak perlu lagi menggunakan props ya sebagai jembatan data yang akan dikirim kan ke component child
+ * Component child -> Component Child.
+ */

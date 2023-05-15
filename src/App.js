@@ -3,6 +3,7 @@ import {Component, Fragment} from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import LayoutMain from "./ui/LayoutMain";
+import {DataContext} from "./context/DataContext";
 
 class App extends Component {
   state = {
@@ -15,9 +16,11 @@ class App extends Component {
   render() {
     return (
       <Fragment>
-        <Header name={this.state.data.name} />
-        <LayoutMain name={this.state.data.name} age={this.state.data.age} />
-        <Footer/>
+        <DataContext.Provider value={this.state.data}>
+          <Header/>
+          <LayoutMain/>
+          <Footer/>
+        </DataContext.Provider>
       </Fragment>
     );
   }
@@ -26,9 +29,8 @@ class App extends Component {
 export default App;
 
 /*
-* Props Drilling -> prop yang melekat pada komponen dan harus dilewati dari satu komponen ke komponen lainnya secara langsung.
-* Pada kode di atas merupakan salah contoh props drilling:
-* - Data dari App tersebut sebagai props ke dalam komponen Header dan LayoutMain.
-* - Di dalam LayoutMain, terdapat lagi dua komponen lain yaitu Sidebar dan Profile.
-* - Data name dan age harus dilewati melalui props dari Main ke Content, yang berarti kita melakukan prop drilling.
+* Kode saat ini kita sudah menerapkan penggunaan context (ini hanya contoh)
+* Component di bawah nya kita tidak perlu lagi mem-passing data untuk diterima sebagai props
+* Sebagai gantinya kita menggunakan sebuah context, disini kita sudah membuat DataContext dan memanfaatkan Provider.
+* Kemudian kita memberikan nilai value untuk dikirimkan sebagai state
 * */
