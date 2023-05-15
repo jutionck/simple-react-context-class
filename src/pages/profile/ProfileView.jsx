@@ -6,10 +6,12 @@ class ProfileView extends Component {
 
   render() {
     const { profile } = this.context;
+    const name = profile && profile.name ? profile.name : 'Default name';
+    console.log('name:', name)
     return (
       <article>
         <h2>Profile</h2>
-        <p>Name: { profile ? profile.name : 'Default name'}</p>
+        <p>Name: { name }</p>
       </article>
     );
   }
