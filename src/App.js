@@ -1,21 +1,26 @@
 import './App.css';
-import {Fragment} from "react";
+import {Component, Fragment} from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import LayoutMain from "./ui/LayoutMain";
 
-function App() {
-  const profile = {
-    name: "John",
-    age: 22
+class App extends Component {
+  state = {
+    data: {
+      name: "John",
+      age: 22
+    }
   }
-  return (
-    <Fragment>
-      <Header name={profile.name} />
-      <LayoutMain name={profile.name} age={profile.age} />
-      <Footer/>
-    </Fragment>
-  );
+
+  render() {
+    return (
+      <Fragment>
+        <Header name={this.state.data.name} />
+        <LayoutMain name={this.state.data.name} age={this.state.data.age} />
+        <Footer/>
+      </Fragment>
+    );
+  }
 }
 
 export default App;
