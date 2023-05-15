@@ -2,16 +2,13 @@ import React, {Component} from 'react';
 import Sidebar from "../components/Sidebar";
 import ProfileView from "../pages/profile/ProfileView";
 import LoginView from "../pages/login/LoginView";
-import CombineContextProvider from "../context/CombineContextProvider";
 
 class LayoutMain extends Component {
   render() {
     return (
       <main>
         <Sidebar />
-        <CombineContextProvider>
           <LoginView/>
-        </CombineContextProvider>
         <ProfileView />
       </main>
     );
@@ -25,4 +22,8 @@ export default LayoutMain;
  * Component child -> Component Child.
  *
  * Ada tambahan CombineProvider, yang saat ini diterapkan pada LoginView
+ *
+ * Permasalahan: Jika component lain ingin menggunakan combine, maka kita akan selalu membungkus dengan CombineContextProvider,
+ * tidak ada salah sebenernya, tetapi akan lebih baik kita akan memanfaatkan HOC, jadi penggunaan combine sudah diterapkan pada
+ * component yang membutuhkan saja, contoh disini adalah LoginView
  */

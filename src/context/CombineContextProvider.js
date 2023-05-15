@@ -22,4 +22,7 @@ export default CombineContextProvider;
 
 /**
  * Tujuan ini dibuat untuk memecah nested consumer pada View contohnya pada project kita adalah (LoginView.js)
+ *
+ * Permasalahan yang timbul adalah, bagaimana jika beberapa component ingin mengakses combine context yang sama ?
+ * Yang terjadi adalah lihat pada penerapan combine context (pada project ini di file (LayoutMain.jsx)
  */

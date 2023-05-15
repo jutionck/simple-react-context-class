@@ -1,11 +1,8 @@
 import React, {Component} from 'react';
 import Cards from "../../components/Cards";
-import {CombineContext} from "../../context/CombineContext";
+import WithCombineContext from "../../hoc/WithCombineContext";
 
 class LoginView extends Component {
-  // melakukan combine context untuk memecah consumer di bawah
-  static contextType = CombineContext;
-
   state = {
     inputValue: ''
   }
@@ -15,8 +12,8 @@ class LoginView extends Component {
   }
 
   onLogin = async () => {
-    // di dapat dari combine context
-    const {serviceCtx, dataCtx} = this.context;
+    // kita ubah menggunakan props karena akan diterapkan HOC
+    const {serviceCtx, dataCtx} = this.props;
     try {
       const response = await serviceCtx.services.loginService.login(this.state.inputValue);
       dataCtx.setProfile({name: response});
@@ -44,7 +41,7 @@ class LoginView extends Component {
               <input type="password" className="form-control" id="inputPassword2" placeholder="Password" disabled/>
             </div>
             <div className="col-md-4">
-              <button className={"btn btn-primary mb-3"} onClick={() => this.onLogin()}>Login</button>
+              <button className={"btn btn-primary mb-3"} onClick={this.onLogin}>Login</button>
             </div>
           </div>
         </Cards>
@@ -53,4 +50,4 @@ class LoginView extends Component {
   }
 }
 
-export default LoginView;
+export default WithCombineContext(LoginView);
